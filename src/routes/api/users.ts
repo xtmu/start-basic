@@ -49,7 +49,7 @@ export const ServerRoute = createServerFileRoute("/api/users")
     GET: async ({ request, context }) => {
       console.info("GET /api/users @", request.url);
       console.info("Fetching users... @", request.url);
-      console.info("Context:", context); // context inferred type is { testParent: boolean; test: boolean; }, but actual context is always replaced by the last middleware's context.
+      console.info("Context:", context); // context inferred type is { testParent: boolean; test: boolean; }, but actually got { test:true }, expected is {test:true,testParent:true}
       const res = await fetch("https://jsonplaceholder.typicode.com/users");
       if (!res.ok) {
         throw new Error("Failed to fetch users");
